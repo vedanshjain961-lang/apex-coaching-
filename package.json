@@ -1,89 +1,164 @@
 {
-  "name": "tailwindcss",
-  "version": "4.3.3",
-  "description": "A utility-first CSS framework for rapidly building custom user interfaces.",
-  "license": "MIT",
+  "name": "react-router",
+  "version": "7.18.4",
+  "description": "Declarative routing for React",
+  "keywords": [
+    "react",
+    "router",
+    "route",
+    "routing",
+    "history",
+    "link"
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/tailwindlabs/tailwindcss.git",
-    "directory": "packages/tailwindcss"
+    "url": "https://github.com/remix-run/react-router",
+    "directory": "packages/react-router"
   },
-  "bugs": "https://github.com/tailwindlabs/tailwindcss/issues",
-  "homepage": "https://tailwindcss.com",
+  "license": "MIT",
+  "author": "Remix Software <hello@remix.run>",
+  "sideEffects": false,
+  "types": "./dist/development/index.d.ts",
+  "main": "./dist/development/index.js",
+  "module": "./dist/development/index.mjs",
   "exports": {
     ".": {
-      "types": "./dist/lib.d.mts",
-      "style": "./index.css",
-      "require": "./dist/lib.js",
-      "import": "./dist/lib.mjs"
+      "react-server": {
+        "module": "./dist/development/index-react-server.mjs",
+        "default": "./dist/development/index-react-server.js"
+      },
+      "node": {
+        "types": "./dist/development/index.d.ts",
+        "module": "./dist/development/index.mjs",
+        "module-sync": "./dist/development/index.mjs",
+        "default": "./dist/development/index.js"
+      },
+      "module": {
+        "types": "./dist/development/index.d.mts",
+        "default": "./dist/development/index.mjs"
+      },
+      "import": {
+        "types": "./dist/development/index.d.mts",
+        "default": "./dist/development/index.mjs"
+      },
+      "default": {
+        "types": "./dist/development/index.d.ts",
+        "default": "./dist/development/index.js"
+      }
     },
-    "./plugin": {
-      "require": "./dist/plugin.js",
-      "import": "./dist/plugin.mjs"
+    "./dom": {
+      "node": {
+        "types": "./dist/development/dom-export.d.ts",
+        "module": "./dist/development/dom-export.mjs",
+        "module-sync": "./dist/development/dom-export.mjs",
+        "default": "./dist/development/dom-export.js"
+      },
+      "module": {
+        "types": "./dist/development/dom-export.d.mts",
+        "default": "./dist/development/dom-export.mjs"
+      },
+      "import": {
+        "types": "./dist/development/dom-export.d.mts",
+        "default": "./dist/development/dom-export.mjs"
+      },
+      "default": {
+        "types": "./dist/development/dom-export.d.ts",
+        "default": "./dist/development/dom-export.js"
+      }
     },
-    "./plugin.js": {
-      "require": "./dist/plugin.js",
-      "import": "./dist/plugin.mjs"
+    "./internal": {
+      "node": {
+        "types": "./dist/development/lib/types/internal.d.ts"
+      },
+      "import": {
+        "types": "./dist/development/lib/types/internal.d.mts"
+      },
+      "default": {
+        "types": "./dist/development/lib/types/index.d.ts"
+      }
     },
-    "./defaultTheme": {
-      "require": "./dist/default-theme.js",
-      "import": "./dist/default-theme.mjs"
+    "./internal/react-server-client": {
+      "react-server": {
+        "module": "./dist/development/index-react-server-client.mjs",
+        "default": "./dist/development/index-react-server-client.js"
+      },
+      "node": {
+        "types": "./dist/development/index.d.ts",
+        "module": "./dist/development/index.mjs",
+        "module-sync": "./dist/development/index.mjs",
+        "default": "./dist/development/index.js"
+      },
+      "module": {
+        "types": "./dist/development/index.d.mts",
+        "default": "./dist/development/index.mjs"
+      },
+      "import": {
+        "types": "./dist/development/index.d.mts",
+        "default": "./dist/development/index.mjs"
+      },
+      "default": {
+        "types": "./dist/development/index.d.ts",
+        "default": "./dist/development/index.js"
+      }
     },
-    "./defaultTheme.js": {
-      "require": "./dist/default-theme.js",
-      "import": "./dist/default-theme.mjs"
-    },
-    "./colors": {
-      "require": "./dist/colors.js",
-      "import": "./dist/colors.mjs"
-    },
-    "./colors.js": {
-      "require": "./dist/colors.js",
-      "import": "./dist/colors.mjs"
-    },
-    "./lib/util/flattenColorPalette": {
-      "require": "./dist/flatten-color-palette.js",
-      "import": "./dist/flatten-color-palette.mjs"
-    },
-    "./lib/util/flattenColorPalette.js": {
-      "require": "./dist/flatten-color-palette.js",
-      "import": "./dist/flatten-color-palette.mjs"
-    },
-    "./package.json": "./package.json",
-    "./index.css": "./index.css",
-    "./index": "./index.css",
-    "./preflight.css": "./preflight.css",
-    "./preflight": "./preflight.css",
-    "./theme.css": "./theme.css",
-    "./theme": "./theme.css",
-    "./utilities.css": "./utilities.css",
-    "./utilities": "./utilities.css"
+    "./package.json": "./package.json"
   },
-  "publishConfig": {
-    "provenance": true,
-    "access": "public"
+  "wireit": {
+    "build": {
+      "command": "premove dist && tsup && tsup --config tsup.config.rsc.ts",
+      "files": [
+        "../../pnpm-workspace.yaml",
+        "lib/**",
+        "*.ts",
+        "tsconfig.json",
+        "package.json"
+      ],
+      "output": [
+        "dist/**"
+      ]
+    }
   },
-  "style": "index.css",
-  "files": [
-    "dist",
-    "index.css",
-    "preflight.css",
-    "theme.css",
-    "utilities.css"
-  ],
+  "dependencies": {
+    "cookie": "^1.0.1",
+    "set-cookie-parser": "^2.6.0"
+  },
   "devDependencies": {
-    "@jridgewell/remapping": "^2.3.5",
-    "@types/node": "22.19.21",
-    "dedent": "1.7.2",
-    "lightningcss": "1.32.0",
-    "magic-string": "^0.30.21",
-    "source-map-js": "^1.2.1",
-    "@tailwindcss/oxide": "^4.3.3"
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/set-cookie-parser": "^2.4.1",
+    "jest-environment-jsdom": "^29.6.2",
+    "premove": "^4.0.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "react-test-renderer": "^19.1.0",
+    "tsup": "^8.3.0",
+    "typescript": "^5.4.5",
+    "undici": "^6.19.2",
+    "wireit": "0.14.9"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "peerDependenciesMeta": {
+    "react-dom": {
+      "optional": true
+    }
+  },
+  "files": [
+    "dist/",
+    "docs/",
+    "CHANGELOG.md",
+    "LICENSE.md",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
   },
   "scripts": {
-    "lint": "tsc --noEmit",
-    "build": "tsup-node --env.NODE_ENV production",
-    "dev": "tsup-node --env.NODE_ENV development --watch",
-    "test:ui": "playwright test"
+    "build": "wireit",
+    "watch": "tsup --watch & tsup --config tsup.config.rsc.ts --watch",
+    "typecheck": "tsc"
   }
 }
